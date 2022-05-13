@@ -1,16 +1,16 @@
-import React from 'react';
+import React from 'react'
 import {
   Route,
   Switch,
   Redirect,
   BrowserRouter as Router,
-} from "react-router-dom";
-import ReactDOM from 'react-dom';
+} from 'react-router-dom'
+import ReactDOM from 'react-dom'
 
-import { LoginScreen } from './screens/login';
-import { DashboardScreen } from './screens/dashboard';
+import { LoginScreen } from './pages/login'
+import { DashboardScreen } from './pages/dashboard'
 
-import './index.css';
+import './assets/app.css'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -23,4 +23,4 @@ ReactDOM.render(
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
-);
+)

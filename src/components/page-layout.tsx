@@ -1,10 +1,14 @@
-import React from 'react';
+import React from 'react'
+import GlobalStyle from '../assets/globalstyle'
+import tw from 'twin.macro'
 
-// Problem: 
+const AppWrapper = tw.main`bg-gray-100`
+
+// Problem:
 //     This should be conditionally rendered based on feature flag enrolment.
-// Feature flag name: 
+// Feature flag name:
 //     general-render-launch-banner
-// Setup: 
+// Setup:
 //     Show to users with flag value: true
 const PromotionalBanner = () => (
   <div className="promotional-banner">
@@ -12,11 +16,18 @@ const PromotionalBanner = () => (
   </div>
 )
 
-export const PageLayout = ({ children, className }: { children: React.ReactNode, className: string }) => {
+export const PageLayout = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode
+  className: string
+}) => {
   return (
-    <div className={`page-layout ${className}`}>
+    <AppWrapper className={`page-layout ${className}`}>
+      <GlobalStyle />
       <PromotionalBanner />
       {children}
-    </div>
+    </AppWrapper>
   )
 }
