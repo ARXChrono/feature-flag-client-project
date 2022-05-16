@@ -6,6 +6,7 @@ import FeaturedCard from '../components/featured-card'
 import LogoSrc from '../assets/google_logo.webp'
 import styled from 'styled-components'
 import { UserIcon, KeyIcon } from '@heroicons/react/solid'
+import useVariationFlags from '../hooks/useVariationFlags'
 
 const Logo = styled.img`
   max-height: 48px;
@@ -14,7 +15,7 @@ const Logo = styled.img`
 
 export const LoginScreen = () => {
   const history = useHistory()
-
+  const variationFlags = useVariationFlags()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -27,7 +28,7 @@ export const LoginScreen = () => {
   }
 
   return (
-    <PageLayout className="login">
+    <PageLayout className="login" flags={variationFlags}>
       <FeaturedCard
         imageSrc={
           'https://images.unsplash.com/photo-1645382884164-55b6a32f698a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80'
@@ -71,7 +72,10 @@ export const LoginScreen = () => {
               placeholder="Password"
             />
           </div>
-          <button type="submit" className="btn">
+          <button
+            type="submit"
+            className="mt-8 ml-auto w-full md:w-auto text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+          >
             Log in
           </button>
         </form>

@@ -11,7 +11,7 @@ const FeatureImageWrapper = styled.div`
 `
 
 const FeatureImage = styled.img`
-  ${tw`h-36 md:h-full object-cover`}
+  ${tw`h-96 w-full md:h-full object-cover`}
 `
 
 const FeaturedContentWrapper = styled.div`

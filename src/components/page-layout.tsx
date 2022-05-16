@@ -24,14 +24,17 @@ const PromotionalBanner = () => (
 export const PageLayout = ({
   children,
   className,
+  flags = {},
 }: {
   children: React.ReactNode
   className: string
+  flags: any
 }) => {
+  const { launchBannerFlagKey } = flags
   return (
     <AppWrapper className={`page-layout ${className}`}>
       <GlobalStyle />
-      <PromotionalBanner />
+      {launchBannerFlagKey && <PromotionalBanner />}
       {children}
     </AppWrapper>
   )
