@@ -30,11 +30,11 @@ export const PageLayout = ({
   className: string
   flags: any
 }) => {
-  const { launchBannerFlagKey } = flags
+  const { launchBannerFlag } = flags
   return (
     <AppWrapper className={`page-layout ${className}`}>
       <GlobalStyle />
-      {launchBannerFlagKey && <PromotionalBanner />}
+      {launchBannerFlag && <PromotionalBanner />}
       {children}
     </AppWrapper>
   )

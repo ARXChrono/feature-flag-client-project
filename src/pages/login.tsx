@@ -6,7 +6,7 @@ import FeaturedCard from '../components/featured-card'
 import LogoSrc from '../assets/google_logo.webp'
 import styled from 'styled-components'
 import { UserIcon, KeyIcon } from '@heroicons/react/solid'
-import useVariationFlags from '../hooks/useVariationFlags'
+import { useVariationFlags } from '../mock-data'
 
 const Logo = styled.img`
   max-height: 48px;

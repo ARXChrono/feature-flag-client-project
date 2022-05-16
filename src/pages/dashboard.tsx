@@ -1,8 +1,7 @@
 import React from 'react'
 import { MedicationDetails } from '../components/medication-details'
 import { PageLayout } from '../components/page-layout'
-import { useMedication, useUser } from '../mock-data'
-import useVariationFlags from '../hooks/useVariationFlags'
+import { useMedication, useUser, useVariationFlags } from '../mock-data'
 
 export const DashboardScreen = () => {
   const user = useUser()

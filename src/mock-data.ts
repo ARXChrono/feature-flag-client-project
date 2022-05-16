@@ -4,11 +4,11 @@ const user = {
   age: 30,
   country: 'Australia',
   allergies: 'nut, dairy',
-  history: 'heart operation in 2019'
+  history: 'heart operation in 2019',
 }
 
 export const useUser = () => {
-  return user;
+  return user
 }
 
 const medication = {
@@ -17,9 +17,19 @@ const medication = {
   name: 'Paracetamol',
   sideEffects: 'Queezy, sleepy',
   warnings: 'Increased heart rate',
-  instructions: 'Take up to 4 times a day to manage pain'
+  instructions: 'Take up to 4 times a day to manage pain',
 }
 
 export const useMedication = () => {
-  return medication;
+  return medication
+}
+
+const flags = {
+  launchBannerFlag: true, // Set to true to show Promo Banner
+  profileSectionFlag: true, // Set to true to show alternative profile details
+  detailsCtaFlag: '#BADA55', // Set Hex color of the CTA Section
+}
+
+export const useVariationFlags = () => {
+  return flags
 }
