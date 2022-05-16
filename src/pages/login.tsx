@@ -2,6 +2,15 @@ import React from 'react'
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { PageLayout } from '../components/page-layout'
+import FeaturedCard from '../components/featured-card'
+import LogoSrc from '../assets/google_logo.webp'
+import styled from 'styled-components'
+import { UserIcon, KeyIcon } from '@heroicons/react/solid'
+
+const Logo = styled.img`
+  max-height: 48px;
+  object-fit: contain;
+`
 
 export const LoginScreen = () => {
   const history = useHistory()
@@ -19,50 +28,54 @@ export const LoginScreen = () => {
 
   return (
     <PageLayout className="login">
-      <div className="bg-white rounded-md shadow-xs overflow-hidden">
-        <div className="md:flex">
-          <div className="md:shrink-0">
-            <img
-              className="h-48 w-full object-cover md:h-full md:w-48 lg:w-96 xl:w-full"
-              src={`https://images.unsplash.com/photo-1550686041-366ad85a1355?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80`}
-              alt="Mountains"
+      <FeaturedCard
+        imageSrc={
+          'https://images.unsplash.com/photo-1645382884164-55b6a32f698a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80'
+        }
+        imageAlt="mountains"
+      >
+        <Logo src={LogoSrc} alt="company logo" />
+        <h2 className="text-md mt-8">Welcome back, John Doe! 👋</h2>
+        <form className="form mt-4" onSubmit={handleFormSubmit}>
+          <label htmlFor="username" className="block text-sm">
+            Username
+          </label>
+          <div className="flex mt-1">
+            <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+              <UserIcon className="h-4 w-4" />
+            </span>
+            <input
+              id="username"
+              type="text"
+              name="username"
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+              className="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="username"
             />
           </div>
-          <div className="p-8 md:h-full md:w-48 lg:w-96 xl:w-full">
-            <h1 className="text-2xl">Welcome back 👋</h1>
-            <form className="form mt-8" onSubmit={handleFormSubmit}>
-              <label htmlFor="username" className="text-sm">
-                Username
-              </label>
-              <input
-                id="username"
-                type="text"
-                name="username"
-                value={username}
-                onChange={(event) => setUsername(event.target.value)}
-                className="appearance-none relative block w-full mb-2 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
-              />
-              <label htmlFor="password" className="text-sm">
-                Password
-              </label>
-              <input
-                id="password"
-                type="password"
-                name="password"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
-              />
-              <button
-                type="submit"
-                className="group relative sm:w-full flex justify-center mt-6 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-              >
-                Log in
-              </button>
-            </form>
+          <label htmlFor="password" className="block text-sm mt-4">
+            Password
+          </label>
+          <div className="flex mt-1">
+            <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+              <KeyIcon className="h-4 w-4" />
+            </span>
+            <input
+              id="password"
+              type="password"
+              name="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              className="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Password"
+            />
           </div>
-        </div>
-      </div>
+          <button type="submit" className="btn">
+            Log in
+          </button>
+        </form>
+      </FeaturedCard>
     </PageLayout>
   )
 }

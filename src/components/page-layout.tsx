@@ -1,8 +1,13 @@
 import React from 'react'
 import GlobalStyle from '../assets/globalstyle'
 import tw from 'twin.macro'
+import styled from 'styled-components'
 
-const AppWrapper = tw.main`bg-gray-100`
+const AppWrapper = styled.main`
+  ${tw`p-4`}
+  margin: 0 auto;
+  max-width: 960px;
+`
 
 // Problem:
 //     This should be conditionally rendered based on feature flag enrolment.
