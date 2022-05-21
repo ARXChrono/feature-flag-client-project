@@ -25,6 +25,8 @@ export const RequestReviewButton = () => {
   const variationFlags = useVariationFlags()
   const { detailsCtaFlag } = variationFlags
   return (
-    <StyledButton color={detailsCtaFlag}>Request doctor review</StyledButton>
+    <StyledButton color={detailsCtaFlag} className="cta-request-review-button">
+      Request doctor review
+    </StyledButton>
   )
 }

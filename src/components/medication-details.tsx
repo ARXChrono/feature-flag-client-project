@@ -14,7 +14,7 @@ export const MedicationDetails = () => {
   const { profileSectionFlag } = variationFlags
   if (profileSectionFlag === 'variation')
     return (
-      <div>
+      <div className="enrolled-medication-details">
         <ul className="text-sm mt-4">
           <li>Common side effects: {medication.sideEffects}</li>
           <li>Warning signs: {medication.warnings}</li>
