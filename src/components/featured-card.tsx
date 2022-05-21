@@ -3,7 +3,11 @@ import tw from 'twin.macro'
 import styled from 'styled-components'
 
 const StyledFeaturedCard = styled.div`
-  ${tw`w-full bg-white rounded-md shadow-sm overflow-hidden flex flex-col md:flex-row`}
+  ${tw`w-full bg-white rounded-md md:shadow-sm overflow-hidden flex flex-col md:flex-row`}
+  @media screen and (max-width: 768px) {
+    min-height: 100vh;
+    overflow: auto;
+  }
 `
 
 const FeatureImageWrapper = styled.div`
@@ -21,13 +25,15 @@ const FeaturedContentWrapper = styled.div`
 const FeaturedCard = ({ children, imageSrc, imageAlt }) => {
   return (
     <StyledFeaturedCard>
-      <FeatureImageWrapper>
-        <FeatureImage
-          src={imageSrc}
-          alt={imageAlt}
-          loading="lazy"
-        ></FeatureImage>
-      </FeatureImageWrapper>
+      {imageSrc && (
+        <FeatureImageWrapper>
+          <FeatureImage
+            src={imageSrc}
+            alt={imageAlt}
+            loading="lazy"
+          ></FeatureImage>
+        </FeatureImageWrapper>
+      )}
       <FeaturedContentWrapper>{children}</FeaturedContentWrapper>
     </StyledFeaturedCard>
   )

@@ -24,7 +24,9 @@ body * {
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
+  @media (min-width: 768px) {
+    justify-content: center;
+  }
 }
 
 .promotional-banner {
@@ -42,8 +44,19 @@ body * {
 }
 
 /* TODO Replace below */
+.dashboard {
+  @media (max-width: 768px) {
+    margin: 5rem 1rem 0;
+  }
+}
+
 .dashboard > .dashboard-details {
   width: 500px;
+  max-width: 100%;
+  background: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
 }
 
 `

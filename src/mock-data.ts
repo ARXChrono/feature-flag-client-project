@@ -26,7 +26,7 @@ export const useMedication = () => {
 
 const flags = {
   launchBannerFlag: true, // Set to true to show Promo Banner
-  profileSectionFlag: true, // Set to true to show alternative profile details
+  profileSectionFlag: 'variation', // Set to 'variation' to show alternative profile details
   detailsCtaFlag: '#BADA55', // Set Hex color of the CTA Section
 }
 

@@ -10,18 +10,18 @@ export const DashboardScreen = () => {
 
   return (
     <PageLayout className="dashboard" flags={variationFlags}>
-      <h1>Dashboard</h1>
+      <h1 className="text-2xl">Dashboard</h1>
       <div className="dashboard-details">
-        <h3>Your information</h3>
-        <ul>
+        <h3 className="text-lg mt-2 mb-2">Your information</h3>
+        <ul className="text-sm">
           <li>Name: {user.name}</li>
           <li>Age: {user.age}</li>
           <li>Country: {user.country}</li>
         </ul>
       </div>
       <div className="dashboard-details">
-        <h3>Your medication</h3>
-        <ul>
+        <h3 className="text-lg mt-2 mb-2">Your medication</h3>
+        <ul className="text-sm">
           <li>Medication: {medication.name}</li>
           <li>Repeats left: {medication.repeatsLeft}</li>
           <li>Instructions: {medication.instructions}</li>

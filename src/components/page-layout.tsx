@@ -4,7 +4,7 @@ import tw from 'twin.macro'
 import styled from 'styled-components'
 
 const AppWrapper = styled.main`
-  ${tw`p-4`}
+  ${tw`md:p-4`}
   margin: 0 auto;
   max-width: 960px;
 `
