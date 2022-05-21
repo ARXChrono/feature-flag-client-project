@@ -34,7 +34,7 @@ body * {
   left: 0;
   right: 0;
   width: 100%;
-  padding: 16px;
+  padding: 1rem;
   display: flex;
   position: fixed;
   text-align: center;

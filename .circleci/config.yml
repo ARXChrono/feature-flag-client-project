@@ -1,0 +1,62 @@
+version: 2.1
+aliases:
+  defaults: &defaults
+    docker:
+      - image: cypress/base:16.14.0
+    working_directory: ~/repo
+
+  restore_cache: &restore_cache
+    restore_cache:
+      name: Restore Cache
+      keys:
+        # when lock file changes, use increasingly general patterns to restore cache
+        - yarn-packages-v1-{{ checksum "yarn.lock" }}
+        - yarn-packages-v1-
+
+  persist_cache: &persist_cache
+    save_cache:
+      name: Save Cache
+      paths:
+        - ~/.cache/yarn
+      key: yarn-packages-v1-{{ checksum "yarn.lock" }}
+
+  install_deps: &install_deps
+    run:
+      name: Install Dependencies with Yarn
+      command: yarn install
+
+  build: &build
+    run:
+      name: Build Feature Flag App
+      command: yarn build
+
+  unit_tests: &unit_tests
+    run:
+      name: Run Unit Tests
+      command: yarn test --coverage
+
+  persist_to_workspace: &persist_to_workspace
+    persist_to_workspace:
+      root: ~/repo
+      paths: .
+
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: ~/repo
+
+jobs:
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - <<: *install_deps
+      - <<: *unit_tests
+      - <<: *build
+      - <<: *persist_cache
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
