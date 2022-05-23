@@ -27,11 +27,7 @@ const FeaturedCard = ({ children, imageSrc, imageAlt }) => {
     <StyledFeaturedCard>
       {imageSrc && (
         <FeatureImageWrapper>
-          <FeatureImage
-            src={imageSrc}
-            alt={imageAlt}
-            loading="lazy"
-          ></FeatureImage>
+          <FeatureImage src={imageSrc} alt={imageAlt} loading="lazy" />
         </FeatureImageWrapper>
       )}
       <FeaturedContentWrapper>{children}</FeaturedContentWrapper>

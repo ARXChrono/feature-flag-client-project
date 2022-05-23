@@ -6,7 +6,6 @@ import FeaturedCard from '../components/featured-card'
 import LogoSrc from '../assets/google_logo.webp'
 import styled from 'styled-components'
 import { UserIcon, KeyIcon } from '@heroicons/react/solid'
-import { useVariationFlags } from '../mock-data'
 
 const Logo = styled.img`
   max-height: 48px;
@@ -15,7 +14,6 @@ const Logo = styled.img`
 
 export const LoginScreen = () => {
   const history = useHistory()
-  const variationFlags = useVariationFlags()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -28,7 +26,7 @@ export const LoginScreen = () => {
   }
 
   return (
-    <PageLayout className="login" flags={variationFlags}>
+    <PageLayout className="login">
       <FeaturedCard
         imageSrc={
           'https://images.unsplash.com/photo-1645382884164-55b6a32f698a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80'
