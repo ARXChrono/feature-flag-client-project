@@ -1,20 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import GlobalStyle from '../assets/globalstyle'
 import tw from 'twin.macro'
 import styled from 'styled-components'
-
-import * as LDClient from 'launchdarkly-js-client-sdk'
-import {
-  launchBannerFlagKey,
-  profileSectionFlagKey,
-  detailsCtaFlagKey,
-} from '../feature-flag-config'
-const apiKey = `${process.env.REACT_APP_LAUNCH_DARKLY_CLIENT_ID}`
-const user = {
-  key: 'anything',
-  name: 'John Doe',
-}
-const client = LDClient.initialize(apiKey, user)
+import { useUser, useVariationFlags } from '../mock-data'
 
 const AppWrapper = styled.main`
   ${tw`md:p-4`}
@@ -41,34 +29,18 @@ export const PageLayout = ({
   children: React.ReactNode
   className: string
 }) => {
-  const [flags, setFlags] = useState({
-    //Defaults
-    launchBannerFlag: false,
-    profileSectionFlag: '',
-    detailsCtaFlag: '',
-  })
-
-  useEffect(() => {
-    client
-      .waitForInitialization()
-      .then(() => {
-        setFlags({
-          launchBannerFlag: client.variation(
-            launchBannerFlagKey,
-            false
-          ) as boolean,
-          profileSectionFlag: client.variation(
-            profileSectionFlagKey,
-            false
-          ) as string,
-          detailsCtaFlag: client.variation(detailsCtaFlagKey, false) as string,
-        })
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
+  const user = useUser()
+  const flags = useVariationFlags()
   const { launchBannerFlag } = flags
+
+  // tracking event
+  const event = {
+    user: user.name,
+    uuid: user.uuid,
+    variationFlags: flags,
+  }
+  console.log('🔥', event)
+
   return (
     <AppWrapper className={`page-layout ${className}`}>
       <GlobalStyle />

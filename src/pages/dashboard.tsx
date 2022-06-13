@@ -1,52 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { MedicationDetails } from '../components/medication-details'
 import { PageLayout } from '../components/page-layout'
-import { useMedication, useUser } from '../mock-data'
-
-import * as LDClient from 'launchdarkly-js-client-sdk'
-import {
-  launchBannerFlagKey,
-  profileSectionFlagKey,
-  detailsCtaFlagKey,
-} from '../feature-flag-config'
-const apiKey = `${process.env.REACT_APP_LAUNCH_DARKLY_CLIENT_ID}`
-const user = {
-  key: 'anything',
-  name: 'John Doe',
-}
-const client = LDClient.initialize(apiKey, user)
+import { useMedication, useUser, useVariationFlags } from '../mock-data'
 
 export const DashboardScreen = () => {
   const user = useUser()
   const medication = useMedication()
-  const [flags, setFlags] = useState({
-    //Defaults
-    launchBannerFlag: false,
-    profileSectionFlag: '',
-    detailsCtaFlag: '',
-  })
+  const variationFlags = useVariationFlags()
 
-  useEffect(() => {
-    client
-      .waitForInitialization()
-      .then(() => {
-        setFlags({
-          launchBannerFlag: client.variation(
-            launchBannerFlagKey,
-            false
-          ) as boolean,
-          profileSectionFlag: client.variation(
-            profileSectionFlagKey,
-            false
-          ) as string,
-          detailsCtaFlag: client.variation(detailsCtaFlagKey, false) as string,
-        })
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
-  const { profileSectionFlag, detailsCtaFlag } = flags
+  const { profileSectionFlag, detailsCtaFlag } = variationFlags
 
   return (
     <PageLayout className="dashboard">
